@@ -8,17 +8,17 @@ namespace Jac.Tripulantes.DAL
 {
     public class EFAzureDatabaseRepositorio : ITripulantesRepositorio
     {
-        public Categoria DameCategoriaPorId(int Id)
+        public Task<Categoria?> DameCategoriaPorId(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public TripulanteConCategoria DameTripulanteConCategoria(int Id)
+        public Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Tripulante DameTripulantePorId(int Id)
+        public Task<Tripulante> DameTripulantePorId(int Id)
         {
             throw new NotImplementedException();
         }
