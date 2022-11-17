@@ -1,26 +1,35 @@
-﻿using Jac.Tripulantes.Models;
+﻿using Jac.Tripulantes.DAL;
+using Jac.Tripulantes.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Jac.Tripulantes.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class TripulantesController : ControllerBase
     {
+        private readonly ITripulantesRepositorio _tripulantesRepositorio;
+
+        public TripulantesController(ITripulantesRepositorio tripulantesRepositorio)
+        {
+            _tripulantesRepositorio = tripulantesRepositorio;
+        }
+
         [HttpGet("Tripulante/{Id}")]
         public async Task<IActionResult> GetTripulanteAsync(int Id)
         {
-            return Ok(new Tripulante());
+            return await Task.Run(async ()=> Ok( await _tripulantesRepositorio.DameTripulantePorId(Id)));
         }
         [HttpGet("Categoria/{Id}")]
         public async Task<IActionResult> GetCategoriaAsync(int Id)
         {
-            return Ok(new Categoria());
+            return await Task.Run(async()=> Ok(await _tripulantesRepositorio.DameCategoriaPorId(Id)));
         }
         [HttpGet("TripulanteConCategoria/{Id}")]
         public async Task<IActionResult> GetTripulanteConCategoria(int Id)
         {
-            return Ok(new TripulanteConCategoria());
+            return await Task.Run(async () => Ok(await _tripulantesRepositorio.DameTripulanteConCategoria(Id)));
         }
     }
 

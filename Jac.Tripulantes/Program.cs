@@ -1,3 +1,6 @@
+using Jac.Tripulantes.DAL;
+using Jac.Tripulantes.Services.TripulanteSpecification;
+
 namespace Jac.Tripulantes
 {
     public class Program
@@ -12,7 +15,8 @@ namespace Jac.Tripulantes
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddScoped<ITripulantesRepositorio, FakeRepositorio>();
+            builder.Services.AddScoped<ITripulanteSpecification, IberiaSpecification>();
             var app = builder.Build();
             
             // Configure the HTTP request pipeline.

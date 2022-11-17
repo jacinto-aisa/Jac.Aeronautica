@@ -8,8 +8,8 @@ namespace Jac.Tripulantes.DAL
 {
     public interface ITripulantesRepositorio
     {
-        Tripulante DameTripulantePorId(int Id);
-        Categoria DameCategoriaPorId(int Id);
-        TripulanteConCategoria DameTripulanteConCategoria(int Id);
+        Task<Tripulante?> DameTripulantePorId(int Id);
+        Task<Categoria?> DameCategoriaPorId(int Id);
+       Task<TripulanteConCategoria> DameTripulanteConCategoria(int Id);
     }
 }
