@@ -7,28 +7,11 @@ namespace Jac.Tripulantes.Models
 {
     public class Categoria : IEntidad
     {
-        public int Id
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public int Id { get; set; }
+        
+        public string? Descripcion { get; set; }
 
-        public string Descripcion
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public float BonificacionAnual { get; set; }
 
-        public float BonificacionAnual
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

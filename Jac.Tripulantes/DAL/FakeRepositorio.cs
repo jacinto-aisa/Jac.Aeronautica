@@ -9,10 +9,12 @@ namespace Jac.Tripulantes.DAL
 
         public FakeRepositorio()
         {
-            Categorias = new(){
-                new Categoria(){ Id = 1, Descripcion = "Categoria normal", BonificacionAnual = 67f },
-                new Categoria(){ Id =2 , Descripcion = "Categoria premium", BonificacionAnual = 76f }
+            Categorias = new()
+            {
+                new Categoria() { Id = 1, Descripcion = "Categoria normal", BonificacionAnual = 67f },
+                new Categoria() { Id = 2, Descripcion = "Categoria premium", BonificacionAnual = 76f }
             };
+
 
             Tripulantes = new List<Tripulante>(){
                 new Tripulante(){ Id = 1, Nombre ="Manolo", CategoriaId = 1, Experiencia = 6 },
@@ -23,7 +25,7 @@ namespace Jac.Tripulantes.DAL
         }
         public async Task<Categoria?> DameCategoriaPorId(int Id)
         {
-            return await Task.Run(() => Categorias.Find(x => x.Id == Id));
+            return await Task.Run(() => Categorias.FirstOrDefault(x => x.Id == Id));
         }
 
 

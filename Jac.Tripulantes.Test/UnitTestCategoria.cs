@@ -11,25 +11,18 @@ namespace Jac.Tripulantes.Test
         TripulantesController controller = new (new FakeRepositorio());
 
         [TestMethod]
-        public void TestCategoriaOK()
+        public async Task TestCategoriaOK()
         {
-            var response = controller.GetCategoriaAsync(1).Result;
-
-            var responseData = response as Categoria;
-            //Assert.AreEqual(1, responseData.Id);
-
-
-            var CategoriaEncontrada = controller.GetCategoriaAsync(1).Result;
-            //Assert.IsNotNull(CategoriaEncontrada);
-            //Assert.AreEqual((CategoriaEncontrada as Categoria).Id, 1);
- 
+            var response = await controller.GetCategoriaAsync(1);
+            Assert.IsNotNull(response);
+            Assert.AreEqual(1, response.Id);
         }
 
         [TestMethod]
-        public void TestCategoriaError()
+        public async Task TestCategoriaError()
         {
-            //var CategoriaEncontrada = controller.GetCategoriaAsync(1).Result;
-            //Assert.IsNull(CategoriaEncontrada);
+            var response = await controller.GetCategoriaAsync(100);
+            Assert.IsNull(response);
         }
 
     }
