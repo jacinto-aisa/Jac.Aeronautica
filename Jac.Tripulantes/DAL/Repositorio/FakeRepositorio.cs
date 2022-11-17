@@ -1,6 +1,6 @@
 ﻿using Jac.Tripulantes.Models;
 
-namespace Jac.Tripulantes.DAL
+namespace Jac.Tripulantes.DAL.Repositorio
 {
     public class FakeRepositorio : ITripulantesRepositorio
     {

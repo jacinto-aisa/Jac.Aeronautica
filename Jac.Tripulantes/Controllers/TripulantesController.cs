@@ -1,4 +1,4 @@
-﻿using Jac.Tripulantes.DAL;
+﻿using Jac.Tripulantes.DAL.Repositorio;
 using Jac.Tripulantes.Models;
 using Microsoft.AspNetCore.Mvc;
 

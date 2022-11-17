@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Jac.Tripulantes.DAL
+namespace Jac.Tripulantes.DAL.Repositorio
 {
     public class EFAzureDatabaseRepositorio : ITripulantesRepositorio
     {
