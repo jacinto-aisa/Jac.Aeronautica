@@ -1,4 +1,5 @@
 using Jac.Tripulantes.DAL;
+using Jac.Tripulantes.Services.TripulanteSpecification;
 
 namespace Jac.Tripulantes
 {
@@ -15,7 +16,7 @@ namespace Jac.Tripulantes
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<ITripulantesRepositorio, FakeRepositorio>();
-
+            builder.Services.AddScoped<ITripulanteSpecification, IberiaSpecification>();
             var app = builder.Build();
             
             // Configure the HTTP request pipeline.
