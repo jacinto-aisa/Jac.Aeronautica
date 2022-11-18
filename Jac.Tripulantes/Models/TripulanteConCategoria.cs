@@ -9,15 +9,7 @@ namespace Jac.Tripulantes.Models
     {
         public Tripulante? Tripulante { get; set; } = default;
         
-            
-        
+        public Categoria? Categoria { get; set; }
 
-        public Categoria Categoria
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

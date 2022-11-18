@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Jac.Tripulantes.DAL.Repositorio
@@ -11,5 +12,8 @@ namespace Jac.Tripulantes.DAL.Repositorio
         Task<Tripulante?> DameTripulantePorId(int Id);
         Task<Categoria?> DameCategoriaPorId(int Id);
         Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id);
+        Task<List<Tripulante>?> FiltroTripulantes(Expression<Func<Tripulante, bool>> predicate);
+        Task<List<Categoria>?> FiltroCategorias(Expression<Func<Categoria, bool>> predicate);
+
     }
 }

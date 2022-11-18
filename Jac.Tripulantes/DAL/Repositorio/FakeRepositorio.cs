@@ -1,4 +1,5 @@
 ﻿using Jac.Tripulantes.Models;
+using System.Linq.Expressions;
 
 namespace Jac.Tripulantes.DAL.Repositorio
 {
@@ -52,6 +53,16 @@ namespace Jac.Tripulantes.DAL.Repositorio
         public async Task<Tripulante?> DameTripulantePorId(int Id)
         {
             return await Task.Run(() => Tripulantes.Find(x => x.Id == Id));
+        }
+
+        public Task<List<Categoria>?> FiltroCategorias(Expression<Func<Categoria, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Tripulante>?> FiltroTripulantes(Expression<Func<Tripulante, bool>> predicate)
+        {
+            throw new NotImplementedException();
         }
     }
 }
