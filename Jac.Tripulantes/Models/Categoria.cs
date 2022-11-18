@@ -13,5 +13,7 @@ namespace Jac.Tripulantes.Models
 
 
         public float BonificacionAnual { get; set; }
+
+        public virtual ICollection<Tripulante>? Tripulantes { get; set; }
     }
 }

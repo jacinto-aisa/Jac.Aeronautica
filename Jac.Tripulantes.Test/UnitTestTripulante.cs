@@ -2,13 +2,14 @@ using Jac.Tripulantes.Controllers;
 using Jac.Tripulantes.DAL;
 using Jac.Tripulantes.DAL.Repositorio;
 using Jac.Tripulantes.Models;
+using Jac.Tripulantes.Services.TripulanteSpecification;
 
 namespace Jac.Tripulantes.Test
 {
     [TestClass]
-    public class UnitTestTripulante
+    public class UnitTestTripulanteIberia
     {
-        TripulantesController controller = new(new FakeRepositorio());
+        TripulantesController controller = new(new FakeRepositorio(),new IberiaTripulanteSpecification());
         [TestMethod]
         public async Task TestTripulanteOK()
         {

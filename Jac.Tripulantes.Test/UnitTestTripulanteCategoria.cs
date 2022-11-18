@@ -1,5 +1,6 @@
 using Jac.Tripulantes.Controllers;
 using Jac.Tripulantes.DAL.Repositorio;
+using Jac.Tripulantes.Services.TripulanteSpecification;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Jac.Tripulantes.Test
@@ -7,7 +8,7 @@ namespace Jac.Tripulantes.Test
     [TestClass]
     public class UnitTestTripulanteCategoria
     {
-        TripulantesController controller = new(new FakeRepositorio());
+        readonly TripulantesController controller = new(new FakeRepositorio(),new IberiaTripulanteSpecification());
         [TestMethod]
         public async Task TestTripulanteCategoriaOK()
         {

@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Jac.Tripulantes.Services.TripulanteSpecification
 {
-    public class VuelingSpecification : ITripulanteSpecification
+    public class IberiaTripulanteSpecification : ITripulanteSpecification
     {
         public bool IsValid(Tripulante Tripulante)
         {
-            throw new NotImplementedException();
+            return Tripulante.Experiencia > 6;
         }
     }
 }

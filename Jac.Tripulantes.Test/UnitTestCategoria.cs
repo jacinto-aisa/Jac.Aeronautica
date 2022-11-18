@@ -2,6 +2,7 @@ using Jac.Tripulantes.Controllers;
 using Jac.Tripulantes.DAL;
 using Jac.Tripulantes.DAL.Repositorio;
 using Jac.Tripulantes.Models;
+using Jac.Tripulantes.Services.TripulanteSpecification;
 using Microsoft.SqlServer.Server;
 using Newtonsoft.Json;
 using System.Runtime.CompilerServices;
@@ -11,7 +12,7 @@ namespace Jac.Tripulantes.Test
     [TestClass]
     public class UnitTestCategoria
     {
-        TripulantesController controller = new (new FakeRepositorio());
+        readonly TripulantesController controller = new (new FakeRepositorio() , new IberiaTripulanteSpecification());
 
         [TestMethod]
         public async Task TestCategoriaOK()

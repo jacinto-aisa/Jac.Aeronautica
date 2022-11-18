@@ -1,5 +1,6 @@
 ﻿using Jac.Tripulantes.DAL.Repositorio;
 using Jac.Tripulantes.Models;
+using Jac.Tripulantes.Services.TripulanteSpecification;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Jac.Tripulantes.Controllers
@@ -10,9 +11,11 @@ namespace Jac.Tripulantes.Controllers
     public class TripulantesController : ControllerBase
     {
         private readonly ITripulantesRepositorio _tripulantesRepositorio;
-
-        public TripulantesController(ITripulantesRepositorio tripulantesRepositorio)
+        private readonly ITripulanteSpecification _tripulanteSpecification;
+        public TripulantesController(ITripulantesRepositorio tripulantesRepositorio,
+                                     ITripulanteSpecification tripulanteSpecification)
         {
+            _tripulanteSpecification= tripulanteSpecification;
             _tripulantesRepositorio = tripulantesRepositorio;
         }
 
@@ -31,6 +34,11 @@ namespace Jac.Tripulantes.Controllers
         {
             return await _tripulantesRepositorio.DameTripulanteConCategoria(Id);
         }
+        //[HttpGet("ListaValidos")]
+        //public async Task<List<Tripulante>> ListaValidos()
+        //{
+        //    return await _tripulantesRepositorio.FiltroTripulantes().AsQueryable;
+        //}
     }
 
 }
