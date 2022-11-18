@@ -10,7 +10,7 @@ namespace Jac.Tripulantes.DAL.Contexto
 
         }
 
-        public DbSet<Tripulante> Tripulantes { get; set; } = default;
-        public DbSet<Categoria> Categorias { get; set; } = default;
+        public DbSet<Tripulante>? Tripulantes { get; set; } = default;
+        public DbSet<Categoria>? Categorias { get; set; } = default;
     }
 }

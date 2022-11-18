@@ -9,8 +9,10 @@ namespace Jac.Tripulantes.DAL.Contexto
     {
         public TripulanteContexto CreateDbContext(string[] args)
         {
+
             var dbContextBuilder = new DbContextOptionsBuilder<TripulanteContexto>();
-            var connectionString = "Server=tcp:servidormovies.database.windows.net,1433;Initial Catalog=mvcmoviebd;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Tripulantes; Integrated Security=True;";
+           // var connectionString = "Server=tcp:servidormovies.database.windows.net,1433;Initial Catalog=mvcmoviebd;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             dbContextBuilder.UseSqlServer(connectionString, sqloptions =>
             {
                 sqloptions.EnableRetryOnFailure(

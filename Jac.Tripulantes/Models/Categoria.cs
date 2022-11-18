@@ -9,7 +9,7 @@ namespace Jac.Tripulantes.Models
     {
         public int Id { get; set; }
 
-        public string Descripcion { get; set; }
+        public string? Descripcion { get; set; } =  default;
 
 
         public float BonificacionAnual { get; set; }
