@@ -48,18 +48,18 @@ namespace Jac.Tripulantes.DAL.Repositorio
                 return null;
         }
 
-        public async Task<List<Categoria>?> FiltroCategorias(Expression<Func<Categoria, bool>> predicate)
+        public async Task<List<Categoria>?> FiltroCategorias( Func<Categoria, bool> predicate)
         {
             if (contexto is not null)
-                return await contexto.Set<Categoria>().Where(predicate).ToListAsync();
+                return await Task.Run(()=> contexto.Set<Categoria>().Where(predicate).ToList());
             else
                 return null;
         }
 
-        public async Task<List<Tripulante>?> FiltroTripulantes(Expression<Func<Tripulante, bool>> predicate)
+        public async Task<List<Tripulante>?> FiltroTripulantes(Func<Tripulante, bool> predicate)
         {
             if (contexto is not null)
-                return await contexto.Set<Tripulante>().Where(predicate).ToListAsync();
+                return await Task.Run(()=> contexto.Set<Tripulante>().Where(predicate).ToList());
             else
                 return null;
         }

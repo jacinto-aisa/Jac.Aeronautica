@@ -24,12 +24,12 @@ namespace Jac.Tripulantes.DAL.Repositorio
             throw new NotImplementedException();
         }
 
-        public Task<List<Categoria>?> FiltroCategorias(Expression<Func<Categoria, bool>> predicate)
+        public Task<List<Categoria>?> FiltroCategorias(Func<Categoria, bool> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Tripulante>?> FiltroTripulantes(Expression<Func<Tripulante, bool>> predicate)
+        public Task<List<Tripulante>?> FiltroTripulantes(Func<Tripulante, bool> predicate)
         {
             throw new NotImplementedException();
         }

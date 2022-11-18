@@ -2,6 +2,7 @@
 using Jac.Tripulantes.Models;
 using Jac.Tripulantes.Services.TripulanteSpecification;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Expressions;
 
 namespace Jac.Tripulantes.Controllers
 {
@@ -34,11 +35,12 @@ namespace Jac.Tripulantes.Controllers
         {
             return await _tripulantesRepositorio.DameTripulanteConCategoria(Id);
         }
-        //[HttpGet("ListaValidos")]
-        //public async Task<List<Tripulante>> ListaValidos()
-        //{
-        //    return await _tripulantesRepositorio.FiltroTripulantes().AsQueryable;
-        //}
+        [HttpGet("ListaValidos")]
+        public async Task<List<Tripulante>?> ListaValidos()
+        {
+            var Criterio = _tripulanteSpecification.IsValid;
+            return await _tripulantesRepositorio.FiltroTripulantes(Criterio);
+        }
     }
 
 }

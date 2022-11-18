@@ -56,14 +56,14 @@ namespace Jac.Tripulantes.DAL.Repositorio
             return await Task.Run(() => Tripulantes.Find(x => x.Id == Id));
         }
 
-        public async Task<List<Categoria>?> FiltroCategorias(Expression<Func<Categoria, bool>> predicate)
+        public async Task<List<Categoria>?> FiltroCategorias(Func<Categoria, bool> predicate)
         {
-            return await Categorias.AsQueryable().Where(predicate).ToListAsync();
+            return await Task.Run(()=>Categorias.AsQueryable().Where(predicate).ToList());
         }
 
-        public async Task<List<Tripulante>?> FiltroTripulantes(Expression<Func<Tripulante, bool>> predicate)
+        public async Task<List<Tripulante>?> FiltroTripulantes(Func<Tripulante, bool> predicate)
         {
-            return await Tripulantes.AsQueryable().Where(predicate).ToListAsync();
+            return await Task.Run(()=>Tripulantes.AsQueryable().Where(predicate).ToList());
         }
     }
 }
