@@ -11,7 +11,7 @@ namespace Jac.Tripulantes.DAL.Repositorio
         {
             Categorias = new(){
                 new Categoria(){ Id = 1, Descripcion = "Categoria normal", BonificacionAnual = 67f },
-                new Categoria(){ Id =2 , Descripcion = "Categoria premium", BonificacionAnual = 76f }
+                new Categoria(){ Id = 2 , Descripcion = "Categoria premium", BonificacionAnual = 76f }
             };
 
             Tripulantes = new List<Tripulante>(){
@@ -27,15 +27,26 @@ namespace Jac.Tripulantes.DAL.Repositorio
         }
 
 
-        public async Task<TripulanteConCategoria> DameTripulanteConCategoria(int Id)
+        public async Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id)
         {
             var tripulante = await DameTripulantePorId(Id);
-            var categoria = await DameCategoriaPorId(tripulante.CategoriaId);
-            return new TripulanteConCategoria()
+            if (tripulante != null)
             {
-                Tripulante = tripulante,
-                Categoria = categoria
-            };
+                var categoria = await DameCategoriaPorId(tripulante.CategoriaId);
+                if (tripulante is not null && categoria is not null)
+                {
+                    return new TripulanteConCategoria()
+                    {
+                        Tripulante = tripulante,
+                        Categoria = categoria
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
         }
 
         public async Task<Tripulante?> DameTripulantePorId(int Id)

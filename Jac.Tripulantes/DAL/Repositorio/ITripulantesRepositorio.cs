@@ -10,6 +10,6 @@ namespace Jac.Tripulantes.DAL.Repositorio
     {
         Task<Tripulante?> DameTripulantePorId(int Id);
         Task<Categoria?> DameCategoriaPorId(int Id);
-        Task<TripulanteConCategoria> DameTripulanteConCategoria(int Id);
+        Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id);
     }
 }

@@ -1,0 +1,24 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+
+namespace Jac.Tripulantes.DAL.Contexto
+{
+    public class TripulanteContextoFactory : IDesignTimeDbContextFactory<TripulanteContexto>
+
+    {
+        public TripulanteContexto CreateDbContext(string[] args)
+        {
+            var dbContextBuilder = new DbContextOptionsBuilder<TripulanteContexto>();
+            var connectionString = "Server=tcp:servidormovies.database.windows.net,1433;Initial Catalog=mvcmoviebd;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            dbContextBuilder.UseSqlServer(connectionString, sqloptions =>
+            {
+                sqloptions.EnableRetryOnFailure(
+                    maxRetryCount: 3,
+                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: new List<int>() { });
+            });
+            return new TripulanteContexto(dbContextBuilder.Options);
+        }
+    }
+}

@@ -4,8 +4,14 @@ namespace Jac.Tripulantes.Test
     public class UnitTestTripulanteCategoria
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestTripulanteCategoriaOK()
         {
+        }
+
+        [TestMethod]
+        public void TestTripulanteCategoriaError()
+        {
+
         }
     }
 }

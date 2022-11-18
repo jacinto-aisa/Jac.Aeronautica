@@ -7,36 +7,13 @@ namespace Jac.Tripulantes.Models
 {
     public class Tripulante : IEntidad
     {
-        public int Id
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public int Id { get; set; }
+        
 
-        public string Nombre
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int CategoriaId
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Experiencia
-        {
-            get => default;
-            set
-            {
-            }
-        }
-    }
+        public string Nombre { get; set; }  
+ 
+        public int CategoriaId { get; set; }
+  
+        public int Experiencia { get; set; }
+     }
 }

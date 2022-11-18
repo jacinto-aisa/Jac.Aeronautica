@@ -17,19 +17,19 @@ namespace Jac.Tripulantes.Controllers
         }
 
         [HttpGet("Tripulante/{Id}")]
-        public async Task<IActionResult> GetTripulanteAsync(int Id)
+        public async Task<Tripulante?> GetTripulanteAsync(int Id)
         {
-            return await Task.Run(async ()=> Ok( await _tripulantesRepositorio.DameTripulantePorId(Id)));
+            return await _tripulantesRepositorio.DameTripulantePorId(Id);
         }
         [HttpGet("Categoria/{Id}")]
-        public async Task<IActionResult> GetCategoriaAsync(int Id)
+        public async Task<Categoria?> GetCategoriaAsync(int Id)
         {
-            return await Task.Run(async()=> Ok(await _tripulantesRepositorio.DameCategoriaPorId(Id)));
+            return await _tripulantesRepositorio.DameCategoriaPorId(Id);
         }
         [HttpGet("TripulanteConCategoria/{Id}")]
-        public async Task<IActionResult> GetTripulanteConCategoria(int Id)
+        public async Task<TripulanteConCategoria?> GetTripulanteConCategoria(int Id)
         {
-            return await Task.Run(async () => Ok(await _tripulantesRepositorio.DameTripulanteConCategoria(Id)));
+            return await _tripulantesRepositorio.DameTripulanteConCategoria(Id);
         }
     }
 
