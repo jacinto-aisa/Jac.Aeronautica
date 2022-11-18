@@ -36,7 +36,7 @@ namespace Jac.Tripulantes.Controllers
             return await _tripulantesRepositorio.DameTripulanteConCategoria(Id);
         }
         [HttpGet("ListaValidos")]
-        public async Task<List<Tripulante>?> ListaValidos()
+        public async Task<List<Tripulante>?> ListaTripulantesValidos()
         {
             var Criterio = _tripulanteSpecification.IsValid;
             return await _tripulantesRepositorio.FiltroTripulantes(Criterio);
