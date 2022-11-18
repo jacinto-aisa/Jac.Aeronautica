@@ -6,7 +6,7 @@ namespace Jac.Tripulantes.DAL.Repositorio
 {
     public class EFRepositorio : ITripulantesRepositorio
     {
-        private readonly TripulanteContexto contexto;
+        private readonly TripulanteContexto? contexto;
         public EFRepositorio()
         {
             string[] args = { "" };

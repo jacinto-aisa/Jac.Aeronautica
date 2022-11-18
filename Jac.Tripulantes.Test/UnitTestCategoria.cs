@@ -14,7 +14,7 @@ namespace Jac.Tripulantes.Test
         TripulantesController controller = new (new FakeRepositorio());
 
         [TestMethod]
-        public async Task  TestCategoriaOK()
+        public async Task TestCategoriaOK()
         {
             var CategoriaEncontrada = await controller.GetCategoriaAsync(1);
             Assert.IsNotNull(CategoriaEncontrada);
