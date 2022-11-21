@@ -11,5 +11,6 @@ namespace Jac.Aeronaves.DAL.Repositorio
     {
         Task<Aeronave?> DameAeronavePorId(int Id);
         Task<List<Aeronave>?> FiltroAeronaves(Func<Aeronave, bool> predicate);
+        Task<List<Aeronave>?> DameTodos();
      }
 }

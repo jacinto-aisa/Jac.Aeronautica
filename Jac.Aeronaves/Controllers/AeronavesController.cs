@@ -35,6 +35,13 @@ namespace Jac.Tripulantes.Controllers
             var Criterio = _aeronaveSpecification.IsValid;
             return await _aeronavesRepositorio.FiltroAeronaves(Criterio);
         }
+
+        [HttpGet("DameTodos")]
+        public async Task<List<Aeronave>?> DameTodos()
+        {
+            return await _aeronavesRepositorio.DameTodos();
+        }
+
     }
 
 }

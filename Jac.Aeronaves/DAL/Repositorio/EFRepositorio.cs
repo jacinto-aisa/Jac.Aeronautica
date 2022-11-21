@@ -1,6 +1,7 @@
 ﻿using Jac.Aeronaves.DAL.Contexto;
 using Jac.Aeronaves.Models;
 using Jac.Tripulantes.DAL.Contexto;
+using Microsoft.EntityFrameworkCore;
 
 namespace Jac.Aeronaves.DAL.Repositorio
 {
@@ -13,9 +14,18 @@ namespace Jac.Aeronaves.DAL.Repositorio
             contexto = new AeronavesContextoFactory().CreateDbContext(args);
         }
 
-        public Task<Aeronave?> DameAeronavePorId(int Id)
+        public async Task<Aeronave?> DameAeronavePorId(int Id)
         {
-            throw new NotImplementedException();
+            if (contexto is not null && contexto.Aeronaves is not null)
+                return await contexto.Aeronaves.FindAsync(Id);
+            return null;
+        }
+
+        public async Task<List<Aeronave>?> DameTodos()
+        {
+            if (contexto is not null && contexto.Aeronaves is not null)
+                return await contexto.Aeronaves.ToListAsync();
+            return null;
         }
 
         public Task<List<Aeronave>?> FiltroAeronaves(Func<Aeronave, bool> predicate)

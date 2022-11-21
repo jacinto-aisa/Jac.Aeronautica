@@ -4,6 +4,13 @@ namespace Jac.Embarque.Services.Tripulantes
 {
     public class ServicioTripulantesInternacional : IServicioTripulante
     {
+        private readonly HttpClient _httpClient;
+
+        public ServicioTripulantesInternacional(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
         public Task<Categoria?> GetCategoriaAsync(int Id)
         {
             throw new NotImplementedException();

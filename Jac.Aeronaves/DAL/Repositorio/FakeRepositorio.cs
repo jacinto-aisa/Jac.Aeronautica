@@ -20,6 +20,11 @@ namespace Jac.Aeronaves.DAL.Repositorio
             return await Task.Run(() => Aeronaves.Find(x => x.Id == Id));
         }
 
+        public async Task<List<Aeronave>?> DameTodos()
+        {
+            return Aeronaves;
+        }
+
         public async Task<List<Aeronave>?> FiltroAeronaves(Func<Aeronave, bool> predicate)
         {
             return await Task.Run(() => Aeronaves.AsQueryable().Where(predicate).ToList());
