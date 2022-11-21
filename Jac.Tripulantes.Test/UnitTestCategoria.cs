@@ -17,10 +17,10 @@ namespace Jac.Tripulantes.Test
         [TestMethod]
         public async Task TestCategoriaOK()
         {
-            var CategoriaEncontrada = await controller.GetCategoriaAsync(1);
-            Assert.IsNotNull(CategoriaEncontrada);
-            Assert.AreEqual(1,CategoriaEncontrada.Id);
-            Assert.AreEqual("Categoria normal", CategoriaEncontrada.Descripcion);
+            var TripulanteEncontrado = await controller.GetCategoriaAsync(1);
+            Assert.IsNotNull(TripulanteEncontrado);
+            Assert.AreEqual(1,TripulanteEncontrado.Id);
+            Assert.AreEqual("Categoria normal", TripulanteEncontrado.Descripcion);
          }
 
         [TestMethod]

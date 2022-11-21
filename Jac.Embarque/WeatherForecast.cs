@@ -1,4 +1,4 @@
-namespace Jac.Aeronaves
+namespace Jac.Embarque
 {
     public class WeatherForecast
     {
