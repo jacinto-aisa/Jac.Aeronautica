@@ -16,7 +16,15 @@ namespace Jac.Aeronaves
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddScoped<IAeronaveSpecification, IberiaAeronaveSpecification>();
-            builder.Services.AddScoped<IAeronavesRepositorio, FakeRepositorio>();
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Services.AddScoped<IAeronavesRepositorio, FakeRepositorio>();
+            }
+            else
+            {
+                builder.Services.AddScoped<IAeronavesRepositorio, EFRepositorio>();
+            }
+
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();

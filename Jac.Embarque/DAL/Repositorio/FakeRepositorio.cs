@@ -1,8 +1,9 @@
-﻿using Jac.Embarque.Models;
+﻿using Jac.Embarque.DAL.Repositorio;
+using Jac.Embarque.Models;
 
-namespace Jac.Aeronaves.DAL.Repositorio
+namespace Jac.Embarque.DAL.Repositorio
 {
-    public class FakeRepositorio : IAeronavesRepositorio
+    public class FakeRepositorio : IEmbarqueRepositorio
     {
         readonly List<EmbarqueAvion> Embarques;
         public FakeRepositorio()
@@ -20,9 +21,30 @@ namespace Jac.Aeronaves.DAL.Repositorio
                 new EmbarqueAvion() { Id = 9,Aeronave=1,NumeroPasajeros=534,TripulantesId="3",Fecha = DateTime.Parse("20221001") }
             };
         }
+
+        public Task<List<Aeronave>?> DameAeronavePorTripulante(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Aeronave>?> DameAeronavesPorCategoria(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<EmbarqueAvion?> DameEmbarquePorId(int Id)
         {
             return await Task.Run(() => Embarques.Find(x => x.Id == Id));
+        }
+
+        public Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Aeronave>?> FiltroAeronaves(Func<EmbarqueAvion, bool> predicate)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<EmbarqueAvion>?> FiltroEmbarques(Func<EmbarqueAvion, bool> predicate)
