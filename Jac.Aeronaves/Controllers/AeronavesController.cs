@@ -1,11 +1,11 @@
 ﻿
 using Jac.Aeronaves.DAL.Repositorio;
 using Jac.Aeronaves.Models;
-using Jac.Aeronaves.Services.TripulanteSpecification;
+using Jac.Aeronaves.Services.AeronavesSpecification;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
-namespace Jac.Tripulantes.Controllers
+namespace Jac.Aeronaves.Controllers
 {
 
     [Route("api/[controller]")]
@@ -24,20 +24,20 @@ namespace Jac.Tripulantes.Controllers
         }
 
         [HttpGet("Aeronave/{Id}")]
-        public async Task<Aeronave?> GetAeronaveAsync(int Id)
+        public async Task<Aeronaves.Models.Aeronave?> GetAeronaveAsync(int Id)
         {
             return await _aeronavesRepositorio.DameAeronavePorId(Id);
         }
        
         [HttpGet("ListaValidos")]
-        public async Task<List<Aeronave>?> ListaAeronavesValidos()
+        public async Task<List<Aeronaves.Models.Aeronave>?> ListaAeronavesValidos()
         {
             var Criterio = _aeronaveSpecification.IsValid;
             return await _aeronavesRepositorio.FiltroAeronaves(Criterio);
         }
 
         [HttpGet("DameTodos")]
-        public async Task<List<Aeronave>?> DameTodos()
+        public async Task<List<Aeronaves.Models.Aeronave>?> DameTodos()
         {
             return await _aeronavesRepositorio.DameTodos();
         }

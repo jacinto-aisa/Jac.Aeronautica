@@ -9,8 +9,8 @@ namespace Jac.Aeronaves.DAL.Repositorio
 {
     public interface IAeronavesRepositorio
     {
-        Task<Aeronave?> DameAeronavePorId(int Id);
-        Task<List<Aeronave>?> FiltroAeronaves(Func<Aeronave, bool> predicate);
-        Task<List<Aeronave>?> DameTodos();
+        Task<Models.Aeronave?> DameAeronavePorId(int Id);
+        Task<List<Models.Aeronave>?> FiltroAeronaves(Func<Models.Aeronave, bool> predicate);
+        Task<List<Models.Aeronave>?> DameTodos();
      }
 }

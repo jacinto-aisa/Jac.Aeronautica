@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace Jac.Tripulantes.DAL.Contexto
+namespace Jac.Aeronaves.DAL.Contexto
 {
     public class AeronavesContextoFactory : IDesignTimeDbContextFactory<AeronavesContexto>
 

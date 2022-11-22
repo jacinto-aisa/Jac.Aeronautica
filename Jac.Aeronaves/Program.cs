@@ -1,8 +1,7 @@
 using Jac.Aeronaves.DAL.Repositorio;
-using Jac.Aeronaves.Services.TripulanteSpecification;
-using Jac.Tripulantes.Services.TripulanteSpecification;
+using Jac.Aeronaves.Services.AeronavesSpecification;
 
-namespace Jac.Aeronaves
+namespace Jac.Aeronave
 {
     public class Program
     {

@@ -9,7 +9,7 @@ namespace Jac.Embarque.DAL.Repositorio
 {
     public interface IEmbarqueRepositorio
     {
-        Task<EmbarqueAvion> DameEmbarquePorId(int Id);
+        Task<EmbarqueAvion?> DameEmbarquePorId(int Id);
         Task<List<Aeronave>?> FiltroAeronaves(Func<EmbarqueAvion, bool> predicate);
         Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id);
         Task<List<Aeronave>?> DameAeronavePorTripulante(int Id);

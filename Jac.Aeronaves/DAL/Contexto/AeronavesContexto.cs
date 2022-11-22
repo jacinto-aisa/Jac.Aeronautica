@@ -10,7 +10,7 @@ namespace Jac.Aeronaves.DAL.Contexto
 
         }
 
-        public DbSet<Aeronave>? Aeronaves { get; set; } = default;
+        public DbSet<Models.Aeronave>? Aeronaves { get; set; } = default;
 
     }
 }

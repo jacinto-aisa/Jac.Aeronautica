@@ -24,9 +24,11 @@ namespace Jac.Embarque.DAL.Repositorio
             throw new NotImplementedException();
         }
 
-        public async Task<EmbarqueAvion> DameEmbarquePorId(int Id)
+        public async Task<EmbarqueAvion?> DameEmbarquePorId(int Id)
         {
-            return await contexto.Embarques.FindAsync(Id);
+            if (contexto.Embarques is not null)
+                return await contexto.Embarques.FindAsync(Id);
+            return null;
         }
 
         public Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id)

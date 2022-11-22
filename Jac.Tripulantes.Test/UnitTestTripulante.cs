@@ -9,7 +9,18 @@ namespace Jac.Tripulantes.Test
     [TestClass]
     public class UnitTestTripulanteIberia
     {
-        TripulantesController controller = new(new FakeRepositorio(),new IberiaTripulanteSpecification());
+        readonly TripulantesController controller = new(new FakeRepositorio(),new IberiaTripulanteSpecification());
+        [TestMethod]
+        public void TestTripulanteObjeto()
+        {
+            Tripulante miTripulante = new Tripulante() { Id = 1, Nombre = "fake", CategoriaId = 1, Experiencia = 9 };
+
+            Assert.IsNotNull(miTripulante);
+            Assert.AreEqual(1, miTripulante.Id);
+            Assert.AreEqual("fake", miTripulante.Nombre);
+            Assert.AreEqual(1, miTripulante.CategoriaId);
+            Assert.AreEqual(9, miTripulante.Experiencia);
+        }
         [TestMethod]
         public async Task TestTripulanteOK()
         {
