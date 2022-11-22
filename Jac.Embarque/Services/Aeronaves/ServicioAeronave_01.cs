@@ -34,9 +34,5 @@ namespace Jac.Embarque.Services.Aeronaves
             throw new NotImplementedException();
         }
 
-        public Task<List<Aeronave>?> ListaAeronavesValidos()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

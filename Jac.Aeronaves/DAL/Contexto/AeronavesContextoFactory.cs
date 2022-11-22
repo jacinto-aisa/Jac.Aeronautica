@@ -13,9 +13,9 @@ namespace Jac.Tripulantes.DAL.Contexto
         {
             //dotnet tool install--global dotnet-ef
             //dotnet tool update--global dotnet-ef
-            //dotnet tool update 0 dotnet -ef
-            //dotnet ef migrations add InitialCreateAzure--context JacintoContext
-            //dotnet ef database update --context JacintoContext
+            //dotnet tool update 0 dotnet -ef (Borrar todas las migraciones)
+            //dotnet ef migrations add InitialCreateLocal --context AeronavesContexto
+            //dotnet ef database update --context AeronavesContexto
 
             var dbContextBuilder = new DbContextOptionsBuilder<AeronavesContexto>();
             var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Aeronaves; Integrated Security=True;";

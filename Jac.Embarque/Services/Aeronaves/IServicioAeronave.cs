@@ -7,7 +7,6 @@ namespace Jac.Embarque.Services.Aeronaves
     {
         public Task<Aeronave?> GetAeronaveAsync(int Id);
 
-        public Task<List<Aeronave>?> ListaAeronavesValidos();
 
         public Task<List<Aeronave>?> DameTodos();
     }
