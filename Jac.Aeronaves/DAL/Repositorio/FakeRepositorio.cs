@@ -22,7 +22,7 @@ namespace Jac.Aeronaves.DAL.Repositorio
 
         public async Task<List<Aeronave>?> DameTodos()
         {
-            return Aeronaves;
+            return await Task.Run(()=>Aeronaves);
         }
 
         public async Task<List<Aeronave>?> FiltroAeronaves(Func<Aeronave, bool> predicate)

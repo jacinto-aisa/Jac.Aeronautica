@@ -1,19 +1,32 @@
 ﻿using Jac.Embarque.Models;
-using Newtonsoft.Json;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
 
 namespace Jac.Embarque.Services.Aeronaves
 {
     public class ServicioAeronave_01 : IServicioAeronave
     {
-        private readonly HttpClient _httpClient;
-        public ServicioAeronave_01(HttpClient httpClient)
+        private readonly JsonSerializerOptions _options;
+        private readonly HttpClient cliente;
+        private readonly IHttpClientFactory clientFactory;
+
+        public ServicioAeronave_01(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            clientFactory= httpClientFactory;
+            cliente= clientFactory.CreateClient();
+            _options = new JsonSerializerOptions() {
+                PropertyNameCaseInsensitive = true
+            };
+            cliente.BaseAddress = new Uri("http://localhost:5200/api/Aeronaves/");
+
         }
         public async Task<List<Aeronave>?> DameTodos()
         {
-            var coleccion = await _httpClient.GetStringAsync("DameTodos");
-            return await Task.Run(() => JsonConvert.DeserializeObject<List<Aeronave>>(coleccion));
+            using HttpResponseMessage response = await cliente.GetAsync("DameTodos");
+            response.EnsureSuccessStatusCode();
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            return await Task.Run(()=> System.Text.Json.JsonSerializer.Deserialize<List<Aeronave>>(jsonResponse, _options));
         }
 
         public Task<Aeronave?> GetAeronaveAsync(int Id)

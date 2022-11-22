@@ -1,41 +1,38 @@
-﻿
-using Jac.Embarque.DAL.Repositorio;
+﻿using Jac.Embarque.DAL.Repositorio;
 using Jac.Embarque.Models;
 using Jac.Embarque.Services.Aeronaves;
 using Jac.Embarque.Services.Tripulantes;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 
-namespace Jac.Tripulantes.Controllers
+namespace Jac.Embarque.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class EmbarqueController : ControllerBase
     {
-        private readonly IEmbarqueRepositorio _embarqueRepositorio;
-        private readonly IServicioAeronave _servicioAeronave;
+        private readonly IServicioAeronave? _servicioAeronave;
         private readonly IServicioTripulante _servicioTripulante;
+        private readonly IEmbarqueRepositorio _embarqueRepositorio;
 
-        public EmbarqueController(IEmbarqueRepositorio embarqueRepositorio,
-                                  IServicioAeronave servicioAeronave,
-                                  IServicioTripulante servicioTripulante)
 
+        public EmbarqueController(
+            IEmbarqueRepositorio embarqueRepositorio,
+            IServicioAeronave servicioAeronave,
+            IServicioTripulante servicioTripulante)
         {
-            _servicioAeronave = servicioAeronave;
-            _servicioTripulante = servicioTripulante;
-            _embarqueRepositorio = embarqueRepositorio;
+            this._embarqueRepositorio = embarqueRepositorio;
+            this._servicioAeronave = servicioAeronave;
+            this._servicioTripulante = servicioTripulante;
         }
-
-        [HttpGet("Aeronave/{Id}")]
-        public async Task<EmbarqueAvion?> GetAeronaveAsync(int Id)
+        [HttpGet("Embarque/{Id}")]
+        public async Task<EmbarqueAvion?> GetEmbarqueAsync(int Id)
         {
             return await _embarqueRepositorio.DameEmbarquePorId(Id);
         }
         [HttpGet("UltimoEmbarquesPorAeronave/{Id}")]
         public async Task<EmbarqueAvion> DameEmbarquePorId(int Id)
         {
-            throw new NotImplementedException();
+            return await _embarqueRepositorio.DameEmbarquesPorIdDeAvion(Id);
         }
         [HttpGet("EmbarquesPorAeronave/{Id}")]
         public Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id)
@@ -55,7 +52,10 @@ namespace Jac.Tripulantes.Controllers
         [HttpGet("DameTodosAviones")]
         public async Task<List<Aeronave>?> DameTodosLosAviones()
         {
-            return await _servicioAeronave.DameTodos();
+            if (_servicioAeronave is not null)
+                return await _servicioAeronave.DameTodos();
+            else
+                return null;
         }
     }
 

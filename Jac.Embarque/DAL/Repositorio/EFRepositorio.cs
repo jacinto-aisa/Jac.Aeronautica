@@ -14,11 +14,6 @@ namespace Jac.Embarque.DAL.Repositorio
             contexto = new EmbarqueContextoFactory().CreateDbContext(args);
         }
 
-        public Task<Aeronave?> DameAeronavePorId(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<List<Aeronave>?> DameAeronavePorTripulante(int Id)
         {
             throw new NotImplementedException();
@@ -29,17 +24,12 @@ namespace Jac.Embarque.DAL.Repositorio
             throw new NotImplementedException();
         }
 
-        public Task<EmbarqueAvion> DameEmbarquePorId(int Id)
+        public async Task<EmbarqueAvion> DameEmbarquePorId(int Id)
         {
-            throw new NotImplementedException();
+            return await contexto.Embarques.FindAsync(Id);
         }
 
         public Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Aeronave>?> FiltroAeronaves(Func<Aeronave, bool> predicate)
         {
             throw new NotImplementedException();
         }
