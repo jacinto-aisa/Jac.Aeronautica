@@ -53,6 +53,22 @@ namespace Jac.Embarque.Controllers
             else
                 return null;
         }
+        [HttpGet("DameTodosLosTripulantes")]
+        public async Task<List<Tripulante>?> DameTodosLosTripulantes()
+        {
+            if (_servicioAeronave is not null)
+                return await _servicioTripulante.DameTodosTripulantes();
+            else
+                return null;
+        }
+        [HttpGet("DameTodasLasCategorias")]
+        public async Task<List<Categoria>?> DameTodasLasCategorias()
+        {
+            if (_servicioAeronave is not null)
+                return await _servicioTripulante.DameTodasLasCategorias();
+            else
+                return null;
+        }
     }
 
 }

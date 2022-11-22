@@ -28,6 +28,15 @@ namespace Jac.Tripulantes.DAL.Repositorio
             return await Task.Run(() => Categorias.Find(x => x.Id == Id));
         }
 
+        public async Task<List<Categoria>?> DameTodasCategorias()
+        {
+            return await Task.Run(()=>Categorias.ToList());
+        }
+
+        public async Task<List<Tripulante>?> DameTodosTripulantes()
+        {
+            return await Task.Run(() => Tripulantes.ToList());
+        }
 
         public async Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id)
         {

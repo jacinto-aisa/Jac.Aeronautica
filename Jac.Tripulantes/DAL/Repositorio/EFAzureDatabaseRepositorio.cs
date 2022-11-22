@@ -14,6 +14,16 @@ namespace Jac.Tripulantes.DAL.Repositorio
             throw new NotImplementedException();
         }
 
+        public Task<List<Categoria>?> DameTodasCategorias()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Tripulante>?> DameTodosTripulantes()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id)
         {
             throw new NotImplementedException();

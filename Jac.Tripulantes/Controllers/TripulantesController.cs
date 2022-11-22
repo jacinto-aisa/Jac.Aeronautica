@@ -41,6 +41,17 @@ namespace Jac.Tripulantes.Controllers
             var Criterio = _tripulanteSpecification.IsValid;
             return await _tripulantesRepositorio.FiltroTripulantes(Criterio);
         }
+        [HttpGet("DameTodasCategorias")]
+        public async Task<List<Categoria>?> ListaCategorias()
+        {
+            return await _tripulantesRepositorio.DameTodasCategorias();
+        }
+        [HttpGet("DameTodosTripulantes")]
+        public async Task<List<Tripulante>?> ListaTripulantes()
+        {
+            return await _tripulantesRepositorio.DameTodosTripulantes();
+        }
+
     }
 
 }

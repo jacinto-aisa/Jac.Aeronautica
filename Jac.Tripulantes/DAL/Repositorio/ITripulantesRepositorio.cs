@@ -15,5 +15,8 @@ namespace Jac.Tripulantes.DAL.Repositorio
         Task<List<Tripulante>?> FiltroTripulantes(Func<Tripulante, bool> predicate);
         Task<List<Categoria>?> FiltroCategorias(Func<Categoria, bool> predicate);
 
+        Task<List<Categoria>?> DameTodasCategorias();
+        Task<List<Tripulante>?> DameTodosTripulantes();
+
     }
 }

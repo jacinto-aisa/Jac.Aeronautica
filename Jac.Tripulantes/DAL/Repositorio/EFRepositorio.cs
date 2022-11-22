@@ -21,6 +21,20 @@ namespace Jac.Tripulantes.DAL.Repositorio
             return null;
         }
 
+        public async Task<List<Categoria>?> DameTodasCategorias()
+        {
+            if (contexto is not null && contexto.Categorias is not null)
+                return await contexto.Categorias.ToListAsync();
+            return null;
+        }
+
+        public async Task<List<Tripulante>?> DameTodosTripulantes()
+        {
+            if (contexto is not null && contexto.Tripulantes is not null)
+                return await contexto.Tripulantes.ToListAsync();
+            return null;
+        }
+
         public async Task<TripulanteConCategoria?> DameTripulanteConCategoria(int Id)
         {
             var tripulanteEncontrado = await DameTripulantePorId(Id);
