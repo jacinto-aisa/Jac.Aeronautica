@@ -18,3 +18,15 @@ Conforme vamos avanzando en el video iremo aplicando en nuestra aplicación.
 Pienso que nos durará unos días realizar el video y el proceso.
 
 
+Faena hasta la terminación de la sesión: Azure Microservicios avanzados, Consumiendo el evento de integración desde Azure Service Bus.
+GrupoRecursos: Jac.Aeronautica
+Azure Service Bus
+Topic: avion-modificado-embarque
+Topic: tripulante-modificado-embarque
+
+Después vamos a modificar el api de embarque y vamos a generar un método GETEmbarqueUpdate (donde le pasamos un embarque), 
+el buscará ese embarque en el repositorio, si el embarqueupdate recibe un avión disinto, enviara un evento del tipo "avion-modificado-embarque", 
+además si cambian los tripulantes deberá de enviar también un evento "tripulante-modificado-embarque".
+
+Esos eventos deberán de contener el Id del embarque y el viejo avion y el nuevo avion en el caso del evento avion-modificado-embarque y 
+El Id de embarque y la lista de tripulantes original y la cambiada (recordar que la lista de tripulantes va en una cadena de texto)
