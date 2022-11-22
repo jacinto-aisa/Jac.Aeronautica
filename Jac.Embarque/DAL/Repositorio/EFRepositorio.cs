@@ -40,5 +40,33 @@ namespace Jac.Embarque.DAL.Repositorio
         {
             throw new NotImplementedException();
         }
+
+        public async Task ModificaEmbarqueAvion(int Id, int avionId)
+        {
+            var EmbarqueOriginal = await DameEmbarquePorId(Id);
+            if (EmbarqueOriginal is not null)
+            {
+                if (avionId != EmbarqueOriginal.Aeronave)
+                {
+                    //Lanzar el evento.
+                    EmbarqueOriginal.Aeronave = avionId;
+                    contexto.SaveChanges();
+                }
+            }
+        }
+
+        public async Task ModificaEmbarqueTripulante(int Id, string listaTripulantes)
+        {
+            var EmbarqueOriginal = await DameEmbarquePorId(Id);
+            if (EmbarqueOriginal is not null)
+            {
+                if (listaTripulantes != EmbarqueOriginal.TripulantesId)
+                {
+                    //Lanzar el evento.
+                    EmbarqueOriginal.TripulantesId = listaTripulantes;
+                    contexto.SaveChanges();
+                }
+            }
+        }
     }
 }

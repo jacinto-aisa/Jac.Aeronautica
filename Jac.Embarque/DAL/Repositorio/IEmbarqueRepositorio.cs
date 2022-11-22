@@ -14,5 +14,7 @@ namespace Jac.Embarque.DAL.Repositorio
         Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id);
         Task<List<Aeronave>?> DameAeronavePorTripulante(int Id);
         Task<List<Aeronave>?> DameAeronavesPorCategoria(int Id);
+        Task ModificaEmbarqueAvion(int Id, int avionId);
+        Task ModificaEmbarqueTripulante(int Id, string listaTripulantes);
      }
 }

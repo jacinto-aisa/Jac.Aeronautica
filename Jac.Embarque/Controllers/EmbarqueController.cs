@@ -31,14 +31,14 @@ namespace Jac.Embarque.Controllers
         }
 
         [HttpGet("EmbarquesPorAeronave/{Id}")]
-        public async Task<List<EmbarqueAvion>?> DameEmbarquesPorIdDeAvion(int Id)
+        public async Task<List<EmbarqueAvion>?> DameEmbarquesPorAeronave(int Id)
         {
             return await _embarqueRepositorio.DameEmbarquesPorIdDeAvion(Id);
         }
         [HttpGet("AeronavesPorTripulante/{Id}")]
-        public Task<List<Aeronave>?> DameAeronavePorTripulante(int Id)
+        public async Task<List<Aeronave>?> DameAeronavePorTripulante(int Id)
         {
-            throw new NotImplementedException();
+            return await _embarqueRepositorio.DameAeronavePorTripulante(Id);
         }
         [HttpGet("AeronavesPorCategoria/{Id}")]
         public Task<List<Aeronave>?> DameAeronavesPorCategoria(int Id)
