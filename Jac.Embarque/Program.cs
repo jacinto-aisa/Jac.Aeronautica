@@ -1,5 +1,6 @@
 using Jac.Embarque;
 using Jac.Embarque.DAL.Repositorio;
+using Jac.Embarque.Integracion;
 using Jac.Embarque.Services.Aeronaves;
 using Jac.Embarque.Services.Tripulantes;
 
@@ -18,6 +19,7 @@ internal class Program
         builder.Services.AddScoped<IEmbarqueRepositorio, FakeRepositorio>();
         builder.Services.AddScoped<IServicioAeronave, ServicioAeronave_01>();
         builder.Services.AddScoped<IServicioTripulante, ServicioTripulantesInternacional>();
+        builder.Services.AddScoped<IServicioDeIntegracion, AzureServiceBus>();
         builder.Services.AddHttpClient();
 
         builder.Services.AddSwaggerGen();

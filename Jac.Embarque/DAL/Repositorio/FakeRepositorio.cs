@@ -50,7 +50,7 @@ namespace Jac.Embarque.DAL.Repositorio
                                                     where embarque.TripulantesId.Contains(Id.ToString())
                                                     select aeronave).Distinct();
 
-            return EmbarquesDondeApareceUnTripulante.ToList();
+            return await Task.Run(()=>EmbarquesDondeApareceUnTripulante.ToList());
         }
 
         public Task<List<Aeronave>?> DameAeronavesPorCategoria(int Id)
@@ -68,8 +68,6 @@ namespace Jac.Embarque.DAL.Repositorio
             return await Task.Run(()=>(from embarque in Embarques
                                        where embarque.Aeronave == Id
                                        select embarque).ToList());
-
-            
         }
 
         public Task<List<Aeronave>?> FiltroAeronaves(Func<EmbarqueAvion, bool> predicate)
