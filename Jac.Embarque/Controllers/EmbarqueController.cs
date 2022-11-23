@@ -30,6 +30,22 @@ namespace Jac.Embarque.Controllers
             return await _embarqueRepositorio.DameEmbarquePorId(Id);
         }
 
+        [HttpGet("Eventos/ModificaAvion/{Id}/{IdAvion}")]
+        public async Task ModificaAvion(int Id, int IdAvion)
+        {
+            var embarque = await _embarqueRepositorio.DameEmbarquePorId(Id);
+            if (embarque is not null)
+            {
+                if (embarque.Aeronave != IdAvion)
+                {
+                    await _servicioDeIntegracion.EnviaEventoAvionModificado(
+                        new EventoAvionCambiadoEnEmbarque() { Id = Id, AvionOriginal = embarque.Aeronave, AvionFinal = IdAvion }
+                    );
+                    await _embarqueRepositorio.ModificaEmbarqueAvion(Id, IdAvion);
+
+                }
+            }
+        }
         [HttpGet("EmbarquesPorAeronave/{Id}")]
         public async Task<List<EmbarqueAvion>?> DameEmbarquesPorAeronave(int Id)
         {
