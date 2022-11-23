@@ -1,6 +1,6 @@
 ﻿using Jac.Embarque.DAL.Repositorio;
-using Jac.Embarque.Integracion;
 using Jac.Embarque.Integracion.Mensajes;
+using Jac.Embarque.Integracion.Servicios;
 using Jac.Embarque.Models;
 using Jac.Embarque.Services.Aeronaves;
 using Jac.Embarque.Services.Tripulantes;

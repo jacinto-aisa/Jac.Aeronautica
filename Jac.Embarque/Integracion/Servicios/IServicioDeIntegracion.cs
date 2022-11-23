@@ -1,6 +1,6 @@
 ﻿using Jac.Embarque.Integracion.Mensajes;
 
-namespace Jac.Embarque.Integracion
+namespace Jac.Embarque.Integracion.Servicios
 {
     public interface IServicioDeIntegracion
     {

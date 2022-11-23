@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Jac.Embarque.Integracion
+namespace Jac.Embarque.Integracion.Servicios
 {
     public class AzureServiceBus : IServicioDeIntegracion
     {
@@ -29,6 +29,8 @@ namespace Jac.Embarque.Integracion
             string jsonString = JsonSerializer.Serialize(cambio);
             var exito = messageBatch.TryAddMessage(new ServiceBusMessage(jsonString));
             await sender.SendMessagesAsync(messageBatch);
+            await sender.DisposeAsync();
+            await client.DisposeAsync();
             return exito;
         }
         public async Task<bool> EnviaEventoTripulanteModificado(EventoTripulanteCambiadoEnEmbarque cambio)
@@ -37,7 +39,11 @@ namespace Jac.Embarque.Integracion
             var sender = client.CreateSender(ColaTripulante);
             using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
             string jsonString = JsonSerializer.Serialize(cambio);
-            return messageBatch.TryAddMessage(new ServiceBusMessage(jsonString));
+            var exito  = messageBatch.TryAddMessage(new ServiceBusMessage(jsonString));
+            await sender.SendMessagesAsync(messageBatch);
+            await sender.DisposeAsync();
+            await client.DisposeAsync();
+            return exito;
         }
     }
 }
