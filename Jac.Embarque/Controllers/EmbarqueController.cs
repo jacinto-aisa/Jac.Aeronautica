@@ -1,4 +1,6 @@
 ﻿using Jac.Embarque.DAL.Repositorio;
+using Jac.Embarque.Integracion;
+using Jac.Embarque.Integracion.Mensajes;
 using Jac.Embarque.Models;
 using Jac.Embarque.Services.Aeronaves;
 using Jac.Embarque.Services.Tripulantes;
@@ -13,16 +15,19 @@ namespace Jac.Embarque.Controllers
         private readonly IServicioAeronave? _servicioAeronave;
         private readonly IServicioTripulante _servicioTripulante;
         private readonly IEmbarqueRepositorio _embarqueRepositorio;
+        private readonly IServicioDeIntegracion _servicioDeIntegracion;
 
 
         public EmbarqueController(
             IEmbarqueRepositorio embarqueRepositorio,
             IServicioAeronave servicioAeronave,
-            IServicioTripulante servicioTripulante)
+            IServicioTripulante servicioTripulante,
+            IServicioDeIntegracion servicioDeIntegracion)
         {
             this._embarqueRepositorio = embarqueRepositorio;
             this._servicioAeronave = servicioAeronave;
             this._servicioTripulante = servicioTripulante;
+            this._servicioDeIntegracion = servicioDeIntegracion;
         }
         [HttpGet("Embarque/{Id}")]
         public async Task<EmbarqueAvion?> GetEmbarqueAsync(int Id)
@@ -30,6 +35,22 @@ namespace Jac.Embarque.Controllers
             return await _embarqueRepositorio.DameEmbarquePorId(Id);
         }
 
+        [HttpGet("Eventos/ModificaAvion/{Id}/{IdAvion}")]
+        public async Task ModificaAvion(int Id, int IdAvion)
+        {
+            var embarque = await _embarqueRepositorio.DameEmbarquePorId(Id);
+            if (embarque is not null)
+            {
+                if (embarque.Aeronave != IdAvion)
+                {
+                    await _servicioDeIntegracion.EnviaEventoAvionModificado(
+                        new EventoAvionCambiadoEnEmbarque() { Id = Id, AvionOriginal = embarque.Aeronave, AvionFinal = IdAvion }
+                    );
+                    await _embarqueRepositorio.ModificaEmbarqueAvion(Id, IdAvion);
+
+                }
+            }
+        }
         [HttpGet("EmbarquesPorAeronave/{Id}")]
         public async Task<List<EmbarqueAvion>?> DameEmbarquesPorAeronave(int Id)
         {

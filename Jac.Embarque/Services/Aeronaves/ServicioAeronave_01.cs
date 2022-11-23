@@ -1,4 +1,5 @@
 ﻿using Jac.Embarque.Models;
+using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -10,16 +11,18 @@ namespace Jac.Embarque.Services.Aeronaves
         private readonly JsonSerializerOptions _options;
         private readonly HttpClient cliente;
         private readonly IHttpClientFactory clientFactory;
-
-        public ServicioAeronave_01(IHttpClientFactory httpClientFactory)
+ 
+        public ServicioAeronave_01(IHttpClientFactory httpClientFactory, IConfiguration Configuracion)
         {
             clientFactory= httpClientFactory;
             cliente= clientFactory.CreateClient();
             _options = new JsonSerializerOptions() {
                 PropertyNameCaseInsensitive = true
             };
-            cliente.BaseAddress = new Uri("http://localhost:5200/api/Aeronaves/");
-
+            var UriString = Configuracion["ServicioAeronaves"];
+            if (UriString != null) { 
+                    cliente.BaseAddress = new Uri(UriString);
+            }
         }
         public async Task<List<Aeronave>?> DameTodos()
         {
