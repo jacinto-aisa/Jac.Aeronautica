@@ -46,12 +46,8 @@ namespace Jac.Embarque.DAL.Repositorio
             var EmbarqueOriginal = await DameEmbarquePorId(Id);
             if (EmbarqueOriginal is not null)
             {
-                if (avionId != EmbarqueOriginal.Aeronave)
-                {
-                    //Lanzar el evento.
-                    EmbarqueOriginal.Aeronave = avionId;
-                    contexto.SaveChanges();
-                }
+                EmbarqueOriginal.Aeronave = avionId;
+                contexto.SaveChanges();
             }
         }
 
@@ -60,12 +56,8 @@ namespace Jac.Embarque.DAL.Repositorio
             var EmbarqueOriginal = await DameEmbarquePorId(Id);
             if (EmbarqueOriginal is not null)
             {
-                if (listaTripulantes != EmbarqueOriginal.TripulantesId)
-                {
-                    //Lanzar el evento.
-                    EmbarqueOriginal.TripulantesId = listaTripulantes;
-                    contexto.SaveChanges();
-                }
+                EmbarqueOriginal.TripulantesId = listaTripulantes;
+                contexto.SaveChanges();
             }
         }
     }
