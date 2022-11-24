@@ -10,7 +10,7 @@ namespace Jac.Embarque.Services.Tripulantes
         private readonly HttpClient cliente;
         private readonly IHttpClientFactory clientFactory;
 
-        public ServicioTripulantesInternacional(IHttpClientFactory httpClientFactory)
+        public ServicioTripulantesInternacional(IHttpClientFactory httpClientFactory, IConfiguration Configuracion)
         {
             clientFactory = httpClientFactory;
             cliente = clientFactory.CreateClient();
@@ -18,7 +18,11 @@ namespace Jac.Embarque.Services.Tripulantes
             {
                 PropertyNameCaseInsensitive = true
             };
-            cliente.BaseAddress = new Uri("http://localhost:5100/api/Tripulantes/");
+            var UriString = Configuracion["ServicioTripulantes"];
+            if (UriString != null)
+            {
+                cliente.BaseAddress = new Uri(UriString);
+            }
 
         }
 

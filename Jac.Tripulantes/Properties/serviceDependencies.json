@@ -3,6 +3,9 @@
     "appInsights1": {
       "type": "appInsights",
       "dynamicId": null
+    },
+    "apis1": {
+      "type": "apis"
     }
   }
 }
