@@ -10,14 +10,14 @@ namespace Jac.Embarque.DAL.Contexto
     {
         public EmbarqueContexto CreateDbContext(string[] args)
         {
-            //dotnet tool install--global dotnet-ef
-            //dotnet tool update--global dotnet-ef
-            //dotnet tool update 0 dotnet -ef
+            //dotnet tool install --global dotnet-ef
+            //dotnet tool update --global dotnet-ef
+            //dotnet tool update 0 dotnet-ef
             //dotnet ef migrations add InitialCreateAzure --context EmbarqueContexto
             //dotnet ef database update --context EmbarqueContexto
             var dbContextBuilder = new DbContextOptionsBuilder<EmbarqueContexto>();
-            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Embarque; Integrated Security=True;";
-            // var connectionString = "Server=tcp:servidormovies.database.windows.net,1433;Initial Catalog=mvcmoviebd;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Embarque; Integrated Security=True;";
+            var connectionString = "Server=tcp:servidorservicios.database.windows.net;Initial Catalog=Embarques;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             dbContextBuilder.UseSqlServer(connectionString, sqloptions =>
             {
                 sqloptions.EnableRetryOnFailure(

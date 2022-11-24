@@ -27,7 +27,7 @@ namespace Jac.Tripulantes
             }
             else
             {
-                builder.Services.AddScoped<ITripulantesRepositorio, EFAzureDatabaseRepositorio>();
+                builder.Services.AddScoped<ITripulantesRepositorio, EFRepositorio>();
                 builder.Services.AddScoped<ITripulanteSpecification, VuelingTripulanteSpecification>();
             }
 

@@ -16,18 +16,21 @@ namespace Jac.Embarque.Controllers
         private readonly IServicioTripulante _servicioTripulante;
         private readonly IEmbarqueRepositorio _embarqueRepositorio;
         private readonly IServicioDeIntegracion _servicioDeIntegracion;
+        private readonly ILogger<EmbarqueController> logger;
 
 
         public EmbarqueController(
             IEmbarqueRepositorio embarqueRepositorio,
             IServicioAeronave servicioAeronave,
             IServicioTripulante servicioTripulante,
-            IServicioDeIntegracion servicioDeIntegracion)
+            IServicioDeIntegracion servicioDeIntegracion,
+            ILogger<EmbarqueController> logger)
         {
             this._embarqueRepositorio = embarqueRepositorio;
             this._servicioAeronave = servicioAeronave;
             this._servicioTripulante = servicioTripulante;
             this._servicioDeIntegracion = servicioDeIntegracion;
+            this.logger= logger;
         }
         [HttpGet("Embarque/{Id}")]
         public async Task<EmbarqueAvion?> GetEmbarqueAsync(int Id)

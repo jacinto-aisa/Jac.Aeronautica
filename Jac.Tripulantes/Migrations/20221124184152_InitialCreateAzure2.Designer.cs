@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jac.Tripulantes.Migrations
 {
     [DbContext(typeof(TripulanteContexto))]
-    [Migration("20221118185138_InitialCreateLocal")]
-    partial class InitialCreateLocal
+    [Migration("20221124184152_InitialCreateAzure2")]
+    partial class InitialCreateAzure2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

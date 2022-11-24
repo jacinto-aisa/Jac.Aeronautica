@@ -15,8 +15,16 @@ internal class Program
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Services.AddScoped<IEmbarqueRepositorio, FakeRepositorio>();
+        }
+        else
+        {
+            builder.Services.AddScoped<IEmbarqueRepositorio, EFRepositorio>();
+        }
 
-        builder.Services.AddScoped<IEmbarqueRepositorio, FakeRepositorio>();
+
         builder.Services.AddScoped<IServicioAeronave, ServicioAeronave_01>();
         builder.Services.AddScoped<IServicioTripulante, ServicioTripulantesInternacional>();
         builder.Services.AddScoped<IServicioDeIntegracion, AzureServiceBus>();
@@ -27,11 +35,10 @@ internal class Program
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
 
         app.UseAuthorization();
 

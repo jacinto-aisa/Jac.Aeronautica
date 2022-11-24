@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jac.Tripulantes.Migrations
 {
     [DbContext(typeof(TripulanteContexto))]
-    [Migration("20221118184648_InitialCreateAzure")]
+    [Migration("20221124183529_InitialCreateAzure")]
     partial class InitialCreateAzure
     {
         /// <inheritdoc />
@@ -62,7 +62,23 @@ namespace Jac.Tripulantes.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaId");
+
                     b.ToTable("Tripulantes");
+                });
+
+            modelBuilder.Entity("Jac.Tripulantes.Models.Tripulante", b =>
+                {
+                    b.HasOne("Jac.Tripulantes.Models.Categoria", null)
+                        .WithMany("Tripulantes")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Jac.Tripulantes.Models.Categoria", b =>
+                {
+                    b.Navigation("Tripulantes");
                 });
 #pragma warning restore 612, 618
         }
